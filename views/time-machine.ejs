@@ -1,0 +1,20 @@
+<%- include('partials/header.ejs') %>
+
+<main class="main">
+  <section class="time-machine-page">
+    <h1>Máquina do Tempo</h1>
+    <p>Veja o que você ouviu nos últimos meses.</p>
+    <div class="time-list">
+      <% TimeMachine.forEach(item => { %>
+        <div class="time-card">
+          <div class="month"><%= item.month %></div>
+          <p>Você ouviu <span><%= item.minutes %></span> minutos de música esse mês.</p>
+          <p>Você escutou <span><%= item.musics %></span> músicas diferentes esse mês.</p>
+          <p>A sua média diária foi de <span><%= item.average %></span>.</p>
+        </div>
+      <% }); %>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer.ejs') %>

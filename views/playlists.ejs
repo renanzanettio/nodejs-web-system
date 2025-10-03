@@ -1,6 +1,18 @@
-<%- include('partials/header') %>
+<%- include('partials/header.ejs') %>
 
-  <h1>PLAYLISTS</h1>
+<main class="main">
+  <section class="playlists-page">
+    <h1>Playlists</h1>
+    <div class="playlist-list">
+      <% Playlist.forEach(playlist => { %>
+        <div class="playlist-card">
+          <iframe src="<%= playlist.link %>" 
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"></iframe>
+        </div>
+      <% }); %>
+    </div>
+  </section>
+</main>
 
-<%- include('partials/footer') %>
-
+<%- include('partials/footer.ejs') %>

@@ -1,6 +1,66 @@
-<%- include('partials/header') %>
+<%- include('partials/header.ejs') %>
 
-  <h1>index</h1>
+<main class="main">
 
-<%- include('partials/footer') %>
+  <section class="hero">
+    <h1 class="title">Tela Inicial</h1>
+    <p class="subtitle">Top artistas, playlists e sua máquina do tempo — tudo em um só lugar.</p>
+    <div class="logo">
+      <img src="/img/z-spotify-logo.svg" alt="Logo Z Spotify">
+    </div>
+  </section>
 
+  <section class="playlists">
+    <div class="section-header">
+      <div style="display: flex;flex-direction: column;">
+        <h2>TOP 5 Playlists</h2>
+        <p class="subtitle">Veja as playlists que você mais curtiu no último mês</p>
+      </div>
+      <a href="#" class="saiba-mais">Saiba Mais</a>
+    </div>
+    <div class="playlist-list">
+      <% Playlist.forEach(playlist => { %>
+
+          <div style="left: 0; width: 100%; height: 352px; position: relative;"><iframe src="<%= playlist.link %>" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen allow="clipboard-write *; encrypted-media *; fullscreen *; picture-in-picture *;"></iframe></div>
+
+      <% }); %>
+    </div>
+  </section>
+
+  <section class="artists">
+    <div class="section-header">
+      <div style="display: flex;flex-direction: column;">
+        <h2>TOP 5 Artistas</h2>
+        <p class="subtitle">Veja os artistas que você mais escutou no último mês</p>        
+      </div>
+
+      <a href="#" class="saiba-mais">Saiba Mais</a>
+    </div>
+    <div class="artist-list">
+      <% Artists.forEach(artist => { %>
+        <div class="artist-card">
+          <img src="/img/<%= artist.img %>" alt="<%= artist.nome %>">
+          <span><%= artist.nome %></span>
+        </div>
+      <% }); %>
+    </div>
+  </section>
+
+  <section class="time-machine">
+    <h2 class="title">Máquina do tempo</h2>
+    <p class="subtitle">Veja o que você ouviu nos últimos 5 meses.</p>
+    <div class="time-list">
+      <% TimeMachine.forEach(item => { %>
+        <div class="time-card">
+          <div class="month"><%= item.month %></div>
+          <p>Você ouviu <span><%= item.minutes %></span> minutos de música esse mês.</p>
+          <p>Você escutou <span><%= item.musics %></span> músicas diferentes esse mês.</p>
+          <p>A sua média diária foi de <span><%= item.average %></span>.</p>
+        </div>
+      <% }); %>
+    </div>
+  </section>
+
+</main>
+
+<%- include('partials/footer.ejs') %>

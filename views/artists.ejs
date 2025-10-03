@@ -1,6 +1,17 @@
-<%- include('partials/header') %>
+<%- include('partials/header.ejs') %>
 
-  <h1>ARTISTS</h1>
+<main class="main">
+  <section class="artists-page">
+    <h1>Artistas</h1>
+    <div class="artist-list">
+      <% Artists.forEach(artist => { %>
+        <div class="artist-card">
+          <img src="/img/<%= artist.img %>" alt="<%= artist.nome %>">
+          <span><%= artist.nome %></span>
+        </div>
+      <% }); %>
+    </div>
+  </section>
+</main>
 
-<%- include('partials/footer') %>
-
+<%- include('partials/footer.ejs') %>

@@ -3,7 +3,7 @@ import express from 'express';
 import indexController from './controllers/indexController.js';
 import artistsController from './controllers/ArtistsController.js';
 import playlistsController from './controllers/PlaylistsController.js';
-import statsController from './controllers/statsController.js';
+import TimeMachineController from './controllers/TimeMachineController.js';
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 app.use('/', indexController);
 app.use('/', artistsController);
 app.use('/', playlistsController);
-app.use('/', statsController);
+app.use('/', TimeMachineController);
 
 
 

@@ -4,6 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="/css/styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <header class="header">
+    <div class="header-logo">
+      <img src="/img/z-spotify-logo-white.svg" alt="Logo Z" style="height: 60px;">
+    </div>
+
+    <nav class="header-nav">
+      <a href="/" class="<%= Page == 'Home' ? 'active' : '' %>" >Início</a> <!-- mesmo se for fazer um ternário de uma linha pra testar a condição precisa de "=" -->
+      <a href="/playlists" class="<%= Page == 'Playlists' ? 'active' : '' %>">Playlists</a>
+      <a href="/artists" class="<%= Page == 'Artists' ? 'active' : '' %>">Artistas</a>
+      <a href="/time-machine" class="<%= Page == 'TimeMachine' ? 'active' : '' %>">Máquina do Tempo</a>
+    </nav>
+
+    <div class="header-profile">
+      <img src="/img/<%- User.img %>" alt="Foto do usuário" style="width: 48px; height: 48px; border-radius: 50%;">
+      <span class="username"><%- User.name %></span>
+    </div>
+  </header>
