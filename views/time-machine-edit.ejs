@@ -1,0 +1,29 @@
+<%- include('partials/header.ejs') %>
+
+    <main class="main">
+        <h1>Máquina do Tempo</h1>
+        <p>Veja o que você ouviu nos últimos meses.</p>
+        <br>
+        <form method="POST" action="/time-machine/update/<%= timeMachine.id %>">
+            <label>Mês (exemplo: "Junho 2025"):</label>
+            <input type="text" name="month" id="month" value="<%= timeMachine.month %>" placeholder="Insira o Mês" class="form-control" required>
+
+            <label>Total de minutos no mês:</label>
+            <input type="number" name="minutes" id="minutes" value="<%= timeMachine.minutes %>" placeholder="Insira o total de minutos"
+                class="form-control" required>
+
+            <label>Total de musicas do mês:</label>
+            <input type="number" name="musics" id="musics" value="<%= timeMachine.musics %>" placeholder="Insira o total de musicas" class="form-control"
+                required>
+
+            <label>Média de minutos no mês:</label>
+            <input type="number" name="average" id="average" value="<%= timeMachine.average %>" placeholder="Insira a média de minutos no mês"
+                class="form-control" required>
+
+            <br>
+            <button class="btn btn-success">Alterar</button>
+            <button type="reset" class="btn btn-secondary ml-2">Limpar</button>
+        </form>
+    </main>
+
+<%- include('partials/footer.ejs') %>

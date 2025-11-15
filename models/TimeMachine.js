@@ -20,6 +20,6 @@ const TimeMachine = connection.define("timemachine", {
     },
 });
 
-//Cliente.sync({ force: false });
+TimeMachine.sync({ force: false });
 
-export default Cliente;
+export default TimeMachine;

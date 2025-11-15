@@ -1,20 +1,53 @@
 <%- include('partials/header.ejs') %>
 
-<main class="main">
-  <section class="time-machine-page">
-    <h1>Máquina do Tempo</h1>
-    <p>Veja o que você ouviu nos últimos meses.</p>
-    <div class="time-list">
-      <% TimeMachine.forEach(item => { %>
-        <div class="time-card">
-          <div class="month"><%= item.month %></div>
-          <p>Você ouviu <span><%= item.minutes %></span> minutos de música esse mês.</p>
-          <p>Você escutou <span><%= item.musics %></span> músicas diferentes esse mês.</p>
-          <p>A sua média diária foi de <span><%= item.average %></span>.</p>
-        </div>
-      <% }); %>
-    </div>
-  </section>
-</main>
+  <main class="main">
+    <section class="time-machine-page">
+      <h1>Máquina do Tempo</h1>
+      <p>Veja o que você ouviu nos últimos meses.</p>
+      <br>
+      <form method="POST" action="/time-machine/new">
+        <label>Mês (exemplo: "Junho 2025"):</label>
+        <input type="text" name="month" id="month" placeholder="Insira o Mês" class="form-control" required>
 
-<%- include('partials/footer.ejs') %>
+        <label>Total de minutos no mês:</label>
+        <input type="number" name="minutes" id="minutes" placeholder="Insira o total de minutos" class="form-control" required>
+
+        <label>Total de musicas do mês:</label>
+        <input type="number" name="musics" id="musics" placeholder="Insira o total de musicas" class="form-control" required>
+
+        <label>Média de minutos no mês:</label>
+        <input type="number" name="average" id="average" placeholder="Insira a média de minutos no mês" class="form-control" required>
+
+        <br>
+        <button class="btn btn-success">Cadastrar</button>
+        <button type="reset" class="btn btn-secondary ml-2">Limpar</button>
+      </form>
+      <br><hr><br>
+      <div class="time-list">
+        <% TimeMachine.forEach(item=> { %>
+          <div class="time-card">
+            <div class="top-row">
+              <div class="month">
+                <%= item.month %>
+              </div>
+              <div class="buttons">
+                <a href="/time-machine/edit/<%= item.id %>"><button class="btn btn-success">Editar</button></a>
+                <a href="/time-machine/delete/<%= item.id %>"><button class="btn btn-danger">Excluir</button></a>
+              </div>
+            </div>
+            <p>Você ouviu <span>
+                <%= item.minutes %>
+              </span> minutos de música esse mês.</p>
+            <p>Você escutou <span>
+                <%= item.musics %>
+              </span> músicas diferentes esse mês.</p>
+            <p>A sua média diária foi de <span>
+                <%= item.average %>
+              </span>.</p>
+          </div>
+          <% }); %>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer.ejs') %>

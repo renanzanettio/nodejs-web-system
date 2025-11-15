@@ -1,8 +1,13 @@
 import { name } from "ejs";
 import express from "express";
+import ModelTimeMachine from "../models/TimeMachine.js";
 const router = express.Router();
 
+
 router.get("/", (req, res) => {
+  // Adicionar os dados do time maquine aqui do banco
+
+
   const User = {
     name: "RwnanZ",
     img: "profile.png"
@@ -56,51 +61,56 @@ router.get("/", (req, res) => {
       img: "major-rd.png"
     }
   ];
-  const TimeMachine = [
-    {
-      id: 1,
-      month: "Maio 2025",
-      minutes: "5.842",
-      musics: "558",
-      average: "188"
-    },
-    {
-      id: 2,
-      month: "Junho 2025",
-      minutes: "9.632",
-      musics: "857",
-      average: "321"
-    },
-    {
-      id: 3,
-      month: "Julho 2025",
-      minutes: "6.300",
-      musics: "742",
-      average: "203"
-    },
-    {
-      id: 4,
-      month: "Agosto 2025",
-      minutes: "11.254",
-      musics: "1.027",
-      average: "363"
-    },
-    {
-      id: 5,
-      month: "Setembro 2025",
-      minutes: "10.258",
-      musics: "949",
-      average: "342"
-    },
+  // const TimeMachine = [
+  //   {
+  //     id: 1,
+  //     month: "Maio 2025",
+  //     minutes: "5.842",
+  //     musics: "558",
+  //     average: "188"
+  //   },
+  //   {
+  //     id: 2,
+  //     month: "Junho 2025",
+  //     minutes: "9.632",
+  //     musics: "857",
+  //     average: "321"
+  //   },
+  //   {
+  //     id: 3,
+  //     month: "Julho 2025",
+  //     minutes: "6.300",
+  //     musics: "742",
+  //     average: "203"
+  //   },
+  //   {
+  //     id: 4,
+  //     month: "Agosto 2025",
+  //     minutes: "11.254",
+  //     musics: "1.027",
+  //     average: "363"
+  //   },
+  //   {
+  //     id: 5,
+  //     month: "Setembro 2025",
+  //     minutes: "10.258",
+  //     musics: "949",
+  //     average: "342"
+  //   },
 
-  ];
-  res.render("index", {
-    User : User,
-    Playlist : Playlist,
-    Artists : Artists,
-    TimeMachine : TimeMachine,
-    Page : "Home"
+  // ];
+  ModelTimeMachine.findAll().then((TimeMachine) => {
+    res.render("index", {
+      User: User,
+      Playlist: Playlist,
+      Artists: Artists,
+      TimeMachine: TimeMachine,
+      Page: "Home"
+    });
+  }).catch((err) => {
+    console.log(err);
   });
+
 });
 
 export default router;

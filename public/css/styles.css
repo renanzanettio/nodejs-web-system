@@ -136,7 +136,7 @@ img {
     }
   }
 
-  .time-machine {
+  .time-machine, .time-machine-page {
     margin-bottom: 3rem;
 
     & .title {
@@ -152,19 +152,28 @@ img {
       margin-bottom: 1.5rem;
     }
 
-    .time-list {
+    & .time-list {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
 
-      .time-card {
+      & .time-card {
         width: 450px;
         text-align: start;
 
-        & .month {
-          margin-top: 0;
-          font-weight: 700;
+        & .top-row {
+          display: flex !important;
+          justify-content: space-between;
+          flex-direction: row;
+          margin-bottom: 5px;
+          align-items: center;
+
+          & .month {
+            margin-top: 0;
+            font-weight: 700;
+          }          
         }
+
 
         p {
           background: #111;

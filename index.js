@@ -3,7 +3,6 @@ const app = express();
 
 import connection from './config/sequelize-config.js';
 
-import TimeMachine from './models/TimeMachine.js';
 
 import indexController from './controllers/indexController.js';
 import artistsController from './controllers/ArtistsController.js';
@@ -25,7 +24,9 @@ connection.query("CREATE DATABASE IF NOT EXISTS zspotify").then(() => {
 
 
 
-
+// Parse form POSTs e JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 app.use(express.static('public'));
